@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id     String  @id @default(uuid()) @db.Uuid
+  name   String
+  gender String
+  slug   String  @unique
+  senior Senior?
+}
+
+model Senior {
+  id      String  @id @default(uuid()) @db.Uuid
+  user_id String  @unique @db.Uuid
+  message String?
+  user    User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model people {
+  slug    String  @id
+  name    String?
+  gender  String?
+  message String?
+}
