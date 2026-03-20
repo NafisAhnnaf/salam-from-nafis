@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from 'framer-motion';
-import { Moon, Star, Sparkles, Copy, Check, Lamp } from 'lucide-react';
-import confetti from 'canvas-confetti'; // Import the confetti library
+import { Moon, Star, Copy, Check, Lamp } from 'lucide-react';
+import confetti from 'canvas-confetti';
 import { useEffect, useState } from 'react';
 
 export default function EidCard({ person, greeting }: { person: any, greeting: string }) {
@@ -14,17 +14,15 @@ export default function EidCard({ person, greeting }: { person: any, greeting: s
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
-    // Add this useEffect to trigger confetti on mount!
+
     useEffect(() => {
-        // Trigger a simple burst on load
         confetti({
             particleCount: 150,
             spread: 120,
             origin: { y: 0.6 },
-            colors: ['#065f46', '#fbbf24', '#ffffff', '#db2777'], // Match your theme!
+            colors: ['#065f46', '#fbbf24', '#ffffff', '#db2777'],
         });
 
-        // Optional: Trigger a second, wider burst for extra celebration
         setTimeout(() => {
             confetti({
                 particleCount: 100,
@@ -34,10 +32,11 @@ export default function EidCard({ person, greeting }: { person: any, greeting: s
             });
         }, 500);
     }, []);
-    return (
-        <div className="flex p-5 items-center justify-center min-h-screen bg-[#010409] p-4 overflow-hidden relative">
 
-            {/* 1. Animated Background Decorative Elements */}
+    return (
+        <div className="flex p-5 items-center justify-center min-h-screen bg-[#010409] overflow-hidden relative font-sans">
+
+            {/* Background Decorative Elements */}
             <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
@@ -63,15 +62,16 @@ export default function EidCard({ person, greeting }: { person: any, greeting: s
                 <Lamp size={40} />
             </motion.div>
 
-            {/* 2. Main Card Wrapper */}
+            {/* Main Card Wrapper using your custom classes */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, ease: "backOut" }}
-                className="relative z-10 card-emerald max-w-lg w-full rounded-[3rem] p-10 text-center border border-white/5 shadow-[0_0_50px_-12px_rgba(16,185,129,0.3)] overflow-hidden"
+                // Added animate-shine and card-emerald here
+                className="relative z-10 card-emerald shine-effect max-w-lg w-full rounded-[3rem] p-10 text-center border border-white/5 shadow-[0_0_50px_-12px_rgba(16,185,129,0.3)] overflow-hidden"
             >
 
-                {/* 3. The Grand "Eid Mubarak" Header */}
+                {/* Grand Header */}
                 <motion.div
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -90,23 +90,21 @@ export default function EidCard({ person, greeting }: { person: any, greeting: s
                     <div className="h-px w-32 bg-gradient-to-r from-transparent via-yellow-500/50 to-transparent mx-auto mt-4" />
                 </motion.div>
 
-                {/* 4. Personalized Greetings */}
+                {/* Greetings */}
                 <div className="mb-10 text-center">
-                    <p className="text-emerald-400 font-mono text-[10px] tracking-[0.4em] uppercase mb-3">
-                        To
-                    </p>
+                    <p className="text-emerald-400 font-mono text-[10px] tracking-[0.4em] uppercase mb-3">To</p>
                     <h3 className="text-3xl font-bold text-white leading-tight italic font-serif">
                         {person.user.name} {greeting}
                     </h3>
-                    <p className="text-emerald-200/50 text-sm mt-1 italic">Assalamualikum {greeting}</p>
+                    <p className="text-emerald-200/50 text-sm mt-1 italic font-serif">Assalamualikum {greeting}</p>
                 </div>
 
-                {/* 5. Heartfelt Message (REVERTED: Wraps in Large Translucent Quotes) */}
+                {/* Message Block */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.6 }}
-                    className="relative px-6 py-8 mb-12"
+                    className="relative px-6 py-8"
                 >
                     <span className="absolute top-0 left-0 text-6xl text-emerald-500/20 font-serif leading-none">“</span>
                     <p className="text-xl md:text-2xl font-light leading-relaxed text-slate-100 font-serif italic relative z-10 px-2">
@@ -115,10 +113,17 @@ export default function EidCard({ person, greeting }: { person: any, greeting: s
                     <span className="absolute bottom-0 right-0 text-6xl text-emerald-500/20 font-serif translate-y-4 leading-none">”</span>
                 </motion.div>
 
-                {/* 6. Salami Receiving Box (Interactive UI) */}
+                {/* --- Added Nafis Salutation --- */}
+                <div className="mb-12 pr-6 text-right">
+                    <p className="text-xs font-serif italic text-emerald-400/60 tracking-widest">
+                        — Nafis Ahnaf Jamil
+                    </p>
+                </div>
+
+                {/* Salami Terminal */}
                 <div className="space-y-4 bg-emerald-950/20 p-6 rounded-[2.5rem] border border-white/5 group transition-all">
                     <p className="text-[10px] uppercase tracking-[0.2em] text-yellow-500/70 mb-4 font-bold">
-                        Salami Receiving Terminal 🌙
+                        Salami Terminal 🌙
                     </p>
 
                     <div className="flex flex-col items-center gap-4">
@@ -128,7 +133,7 @@ export default function EidCard({ person, greeting }: { person: any, greeting: s
                             whileTap={{ scale: 0.95 }}
                             className="cursor-pointer group flex items-center gap-3 bg-black/40 px-6 py-3 rounded-2xl border border-emerald-500/30 hover:border-emerald-400 transition-all shadow-inner"
                         >
-                            <span className="text-2xl font-mono font-bold tracking-widest text-white">
+                            <span className="text-2xl font-mono font-bold tracking-widest text-white italic">
                                 {bkashNumber}
                             </span>
                             {copied ? <Check size={20} className="text-emerald-400" /> : <Copy size={18} className="text-emerald-500/50 group-hover:text-emerald-400" />}

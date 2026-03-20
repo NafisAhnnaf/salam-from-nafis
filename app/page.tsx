@@ -50,19 +50,19 @@ export default function LandingPage() {
         {/* Social Links Section */}
         <motion.div variants={itemVars} className="flex flex-wrap justify-center gap-4">
           <SocialLink
-            href="https://facebook.com/your-profile"
+            href="https://www.facebook.com/nafisahnaf.jamil.5"
             icon={<Facebook size={20} />}
             label="Facebook"
             color="hover:text-blue-500"
           />
           <SocialLink
-            href="https://linkedin.com/in/your-profile"
+            href="https://www.linkedin.com/in/nafis-ahnaf-jamil-0b9212369/"
             icon={<Linkedin size={20} />}
             label="LinkedIn"
             color="hover:text-blue-400"
           />
           <SocialLink
-            href="mailto:your-email@example.com"
+            href="mailto:nafisahnaf@yahoo.com"
             icon={<Mail size={20} />}
             label="Email"
             color="hover:text-emerald-400"

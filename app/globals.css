@@ -44,7 +44,14 @@
   100% { background-position: 0% 50%; }
 }
 
-/* The "Shine" Overlay effect */
+/* 1. The Royal Emerald (Deep Green & Gold Glow) */
+/* .card-emerald {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 20px rgba(5, 150, 105, 0.4), inset 0 0 15px rgba(255, 215, 0, 0.1);
+} */
+
+/* The "Shine" Overlay effect - Now Automatic */
 .shine-effect {
   position: relative;
   overflow: hidden;
@@ -57,12 +64,30 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(to bottom right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(
+    to bottom right, 
+    rgba(255,255,255,0) 0%, 
+    rgba(255,255,255,0.1) 50%, 
+    rgba(255,255,255,0) 100%
+  );
   transform: rotate(45deg);
-  transition: all 0.5s;
+  /* REPLACED: transition with animation */
+  animation: shine-sweep 4s infinite ease-in-out;
+  pointer-events: none;
 }
 
-.shine-effect:hover::after {
-  left: 100%;
-  top: 100%;
+/* Add these keyframes at the bottom of your CSS */
+@keyframes shine-sweep {
+  0% {
+    left: -150%;
+    top: -150%;
+  }
+  20% {
+    left: 100%;
+    top: 100%;
+  }
+  100% {
+    left: 100%;
+    top: 100%;
+  }
 }
