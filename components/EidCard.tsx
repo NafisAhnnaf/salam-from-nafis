@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 
 export default function EidCard({ person, greeting }: { person: any, greeting: string }) {
     const [copied, setCopied] = useState(false);
-    const bkashNumber = process.env.NEXT_PUBLIC_BKASH;
+    const bkashNumber = process.env.NEXT_PUBLIC_BKASH!;
 
     const copyToClipboard = () => {
         navigator.clipboard.writeText(bkashNumber);
