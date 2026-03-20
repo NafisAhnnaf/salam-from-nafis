@@ -7,7 +7,7 @@ export async function loginAction(prevState: any, formData: FormData) {
 
     // Note: Since this is server-side, you can use ADMIN_SECRET (non-public)
     // but I've kept it as your variable name for consistency.
-    const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_SECRET;
+    const ADMIN_PASSWORD = process.env.ADMIN_SECRET;
 
     if (password === ADMIN_PASSWORD) {
         const cookieStore = await cookies();
