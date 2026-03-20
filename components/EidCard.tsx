@@ -142,7 +142,7 @@ export default function EidCard({ person, greeting }: { person: any, greeting: s
                         <img
                             src="/bkash4.svg"
                             alt="bKash"
-                            className="h-8 w-auto opacity-90 group-hover:opacity-100 transition-opacity brightness-110"
+                            className="h-12 rounded py-[-10px] px-5 bg-white w-auto opacity-90 group-hover:opacity-100 transition-opacity brightness-110"
                         />
                     </div>
                 </div>
